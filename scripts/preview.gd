@@ -15,6 +15,7 @@ var paused := false
 var safe := false
 var current_video := ""
 var stage: Node3D
+var active_scene := "study"
 var use_3d := false
 var visual_mode := "auto"
 var written_frame := -1
@@ -159,6 +160,8 @@ func seek(time: float) -> void:
   cursor += duration
  var shot: Dictionary = episode.shots[shot_index]
  var local_time := elapsed - shot_start
+ if is_instance_valid(stage) and stage.has_method("set_scene"):
+  stage.set_scene(str(shot.get("scene", "study")))
  hook_pose = sample_hook(shot.get("hook", {}), local_time)
  use_3d = shot_has_3d(shot)
  if is_instance_valid(stage):

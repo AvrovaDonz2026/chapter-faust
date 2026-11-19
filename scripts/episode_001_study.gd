@@ -22,6 +22,8 @@ var crimson_light: OmniLight3D
 var door: Node3D
 var shadow: Node3D
 var key: Node3D
+var scene_sets: Dictionary = {}
+var current_scene := "study"
 
 func _ready() -> void:
 	_build_room()
@@ -29,6 +31,8 @@ func _ready() -> void:
 	_build_faust()
 	_build_threshold()
 	_light_study()
+	_build_alternate_scenes()
+	set_scene("study")
 	camera.look_at(Vector3(0.1, 1.32, -0.9))
 
 func supports(spec: Dictionary) -> bool:
@@ -46,7 +50,21 @@ func supports(spec: Dictionary) -> bool:
 func _vector(coordinates: Array) -> Vector3:
 	return Vector3(coordinates[0], coordinates[1], coordinates[2])
 
+func set_scene(scene_id: String) -> void:
+	if scene_id.is_empty(): scene_id = "study"
+	if current_scene == scene_id and scene_sets.size() > 0: return
+	current_scene = scene_id if scene_sets.has(scene_id) else "study"
+	for id in scene_sets:
+		scene_sets[id].visible = id == current_scene
+	room.visible = current_scene == "study"
+	desk.visible = current_scene == "study" or current_scene == "contract"
+	threshold.visible = current_scene in ["study", "contract", "threshold"]
+	faust.visible = current_scene != "threshold"
+	if wick_light: wick_light.light_color = Color("ffab62") if current_scene in ["study", "contract"] else Color("8da8ff")
+	if crimson_light: crimson_light.light_energy = 1.5 if current_scene in ["contract", "threshold"] else 0.65
+
 func pose(spec: Dictionary, u: float, time: float, hook_lift := 0.0, hook_turn := 0.0) -> void:
+	set_scene(str(spec.get("scene", current_scene)))
 	# Sample poses directly so scrubbing, pauses, and fixed-FPS renders agree.
 	var beat := StringName(spec.beat)
 	var ease_u := smoothstep(0.0, 1.0, u)
@@ -89,6 +107,37 @@ func pose(spec: Dictionary, u: float, time: float, hook_lift := 0.0, hook_turn :
 	shadow.rotation.z = knocks * 0.08
 	door.rotation.y = -1.37 * smoothstep(0.11, 0.81, u) if beat == &"open" else -0.035 * knocks
 	crimson_light.light_energy = (1.55 + 1.25 * ease_u if beat == &"open" else 1.1) + knocks * 0.6 + 0.11 * sin(time * 2.7)
+
+func _build_alternate_scenes() -> void:
+	var library := _pivot(self, "LibraryScene", Vector3.ZERO)
+	for x in [-2.8, -1.4, 0.0, 1.4, 2.8]:
+		_box(library, "LibraryShelf", Vector3(x, 1.75, -2.9), Vector3(1.12, 3.5, 0.28), "30283a")
+		for y in [0.55, 1.2, 1.85, 2.5, 3.15]:
+			_box(library, "Shelf", Vector3(x, y, -2.70), Vector3(1.08, 0.07, 0.52), "775044")
+			for book in range(5):
+				_box(library, "Tome", Vector3(x - 0.42 + book * 0.20, y + 0.16, -2.65), Vector3(0.13, 0.30 + (book % 3) * 0.08, 0.34), BOOK_COLORS[(book + int(x)) % BOOK_COLORS.size()])
+	for x in [-3.4, 3.4]: _box(library, "LibraryPillar", Vector3(x, 2.0, -2.5), Vector3(0.28, 4.0, 0.4), "57404a")
+	_box(library, "LibraryFloor", Vector3(0, -0.05, -0.4), Vector3(7.8, 0.12, 7.0), "241f31")
+	var corridor := _pivot(self, "CorridorScene", Vector3.ZERO)
+	_box(corridor, "CorridorFloor", Vector3(0, -0.05, -0.4), Vector3(7.8, 0.12, 7.0), "26303b")
+	for z in [-3.0, -1.3, 0.4, 2.1]:
+		_box(corridor, "Window", Vector3(-3.0, 2.15, z), Vector3(0.12, 3.1, 1.18), "172333", 0.12)
+		_box(corridor, "WindowGlow", Vector3(-2.90, 2.15, z), Vector3(0.03, 2.6, 0.85), "607fa0", 0.34)
+		_box(corridor, "Arch", Vector3(2.7, 2.0, z), Vector3(0.24, 3.8, 0.24), "493d48")
+	_box(corridor, "RainReflection", Vector3(-0.8, 0.02, -1.4), Vector3(3.8, 0.025, 0.9), "466279", 0.18)
+	var contract := _pivot(self, "ContractScene", Vector3.ZERO)
+	_box(contract, "MirrorWall", Vector3(-2.7, 2.1, -2.8), Vector3(0.12, 3.8, 5.8), "17202b", 0.24)
+	for y in [0.8, 1.75, 2.7]: _box(contract, "Mirror", Vector3(-2.60, y, -2.78), Vector3(0.025, 0.65, 1.75), "6c5361", 0.55)
+	_box(contract, "ContractTable", Vector3(0.0, 1.08, -0.2), Vector3(3.0, 0.16, 1.2), "513437")
+	_box(contract, "ContractPaper", Vector3(0.0, 1.19, -0.2), Vector3(1.35, 0.025, 0.75), "c5a777", 0.04)
+	for x in [-1.3, 1.3]: _taper(contract, "RedCandle", Vector3(x, 1.45, -0.2), 0.42, 0.06, 0.07, "e05b55", 12)
+	var threshold_scene := _pivot(self, "ThresholdScene", Vector3.ZERO)
+	_box(threshold_scene, "VoidFloor", Vector3(0, -0.08, -0.4), Vector3(8.0, 0.12, 7.0), "180f2b", 0.16)
+	for i in range(9):
+		var shard := _box(threshold_scene, "FloatingShard", Vector3(-3.2 + i * 0.8, 1.0 + (i % 4) * 0.55, -1.8 - (i % 3) * 0.5), Vector3(0.06, 0.9, 0.45), "b52c52", 0.65)
+		shard.rotation.z = -0.3 + i * 0.17
+	_box(threshold_scene, "RedPortal", Vector3(0, 2.0, -3.0), Vector3(2.7, 3.8, 0.08), "b52c52", 0.85)
+	scene_sets = {"library": library, "corridor": corridor, "contract": contract, "threshold": threshold_scene}
 
 func _material(color_code: String, emission := 0.0) -> StandardMaterial3D:
 	var id := "%s:%s" % [color_code, emission]

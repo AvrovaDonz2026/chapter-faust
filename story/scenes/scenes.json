@@ -1,0 +1,42 @@
+[
+  {
+    "id": "study",
+    "description": "午夜书房：书桌、烛火、书架与门槛。",
+    "characters": [
+      "faust",
+      "visitor"
+    ]
+  },
+  {
+    "id": "library",
+    "description": "禁书藏书阁：高耸书架、浮动书页与旋转楼梯。",
+    "characters": [
+      "faust",
+      "visitor"
+    ]
+  },
+  {
+    "id": "corridor",
+    "description": "雨夜走廊：长廊、窗格、积水反光与移动影子。",
+    "characters": [
+      "faust",
+      "visitor"
+    ]
+  },
+  {
+    "id": "contract",
+    "description": "镜厅契约室：镜面、契约桌、红色烛光与倒影。",
+    "characters": [
+      "faust",
+      "visitor"
+    ]
+  },
+  {
+    "id": "threshold",
+    "description": "深红门后：无重力碎片、红雾与通往未知的门。",
+    "characters": [
+      "faust",
+      "visitor"
+    ]
+  }
+]

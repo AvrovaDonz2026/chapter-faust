@@ -1,11 +1,11 @@
 # chapter-faust — 浮士德第一集
 
-*Faust: The Knock* is a 3–5 minute, thirty-shot Chinese Faust adaptation with captions and an instrumental score. The production art path is modeled, lit, and assembled in Godot 4. The SVGs under `assets/fallback/` are storyboard plates only; they are byte-identical copies of the adopted `libfaust` assets.
+*Faust: The Knock* is a 3–5 minute, thirty-shot Chinese Faust adaptation with captions and an instrumental score. The production art path is modeled, lit, and assembled in Godot 4 across five native 3D locations. The SVGs under `assets/fallback/` are storyboard plates only; they are byte-identical copies of the adopted `libfaust` assets.
 
 ## Art and shot authoring
 Open `scenes/episode_001_study.tscn` in Godot to inspect the study. Its `@tool` script, `scripts/episode_001_study.gd`, builds the low-poly room, desk, books, candle, Faust, key, and threshold from Godot primitives and materials. Edit the scene for the main group transforms and the script for the generated geometry and lighting. The brass key is also modeled in Godot; the external candidate key is not used.
 
-`story/episodes/episode-001.json` selects the Godot scene with `godot_scene`. Each shot's `godot_3d` block gives the action beat, camera and look-at endpoints (`[x, y, z]` in scene coordinates), and vertical FOV in degrees. The `asset` and 2D pan/zoom fields are for the storyboard. Shot durations, transitions, captions, and music cues are shared between both paths.
+`story/episodes/episode-001.json` selects the Godot scene with `godot_scene`; each shot also declares one of five locations: `study`, `library`, `corridor`, `contract`, or `threshold`. The Godot stage switches the native geometry, lighting, and props at each location boundary. Each shot's `godot_3d` block gives the action beat, camera and look-at endpoints (`[x, y, z]` in scene coordinates), and vertical FOV in degrees. The `asset` and 2D pan/zoom fields are for the storyboard. Shot durations, transitions, captions, and music cues are shared between both paths.
 
 ## Short-drama pacing
 The first shot must show a supernatural action by 5 seconds, even with sound off. The cold open starts on the brass key: it lifts and spins from 0.5 seconds, reaches its highest point at 2.0, and settles at 3.5. At 4.0 seconds the shot changes to Faust's reaction. The storyboard keeps its adopted plates and animates a drawn key with the same timing.

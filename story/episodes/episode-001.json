@@ -63,7 +63,8 @@
           0.54
         ],
         "fov_from": 43.0,
-        "fov_to": 38.5
+        "fov_to": 38.5,
+        "scene": "study"
       }
     },
     {
@@ -105,7 +106,8 @@
           -0.41
         ],
         "fov_from": 40.0,
-        "fov_to": 35.5
+        "fov_to": 35.5,
+        "scene": "study"
       }
     },
     {
@@ -145,7 +147,8 @@
           -0.39
         ],
         "fov_from": 42.0,
-        "fov_to": 35.5
+        "fov_to": 35.5,
+        "scene": "study"
       }
     },
     {
@@ -185,7 +188,8 @@
           -3.22
         ],
         "fov_from": 42.0,
-        "fov_to": 37.5
+        "fov_to": 37.5,
+        "scene": "study"
       }
     },
     {
@@ -226,7 +230,8 @@
           -3.19
         ],
         "fov_from": 44.0,
-        "fov_to": 40.5
+        "fov_to": 40.5,
+        "scene": "study"
       }
     },
     {
@@ -266,7 +271,8 @@
           0.479
         ],
         "fov_from": 39.0,
-        "fov_to": 32.5
+        "fov_to": 32.5,
+        "scene": "study"
       }
     },
     {
@@ -277,7 +283,7 @@
       "cue": "act-2",
       "camera": "横摇追踪墙上影子",
       "prompt": "study",
-      "scene": "study",
+      "scene": "library",
       "composition": "low tabletop close-up, centered on the brass key",
       "action": "烛火熄灭又复燃",
       "continuity": "第2幕，The candle flares as the key rises",
@@ -306,7 +312,8 @@
           -0.429
         ],
         "fov_from": 38.0,
-        "fov_to": 37.0
+        "fov_to": 37.0,
+        "scene": "library"
       }
     },
     {
@@ -317,7 +324,7 @@
       "cue": "act-2",
       "camera": "三次叩门逐次逼近",
       "prompt": "portrait",
-      "scene": "study",
+      "scene": "library",
       "composition": "centered portrait",
       "action": "墨迹在纸上自行成字",
       "continuity": "第2幕，Amber key light",
@@ -348,7 +355,8 @@
           -0.41
         ],
         "fov_from": 40.0,
-        "fov_to": 37.0
+        "fov_to": 37.0,
+        "scene": "library"
       }
     },
     {
@@ -359,7 +367,7 @@
       "cue": "act-2",
       "camera": "环绕书桌寻找钥匙",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "library",
       "composition": "wide silhouette",
       "action": "门缝光线吞没桌面",
       "continuity": "第2幕，Crimson marks the intrusion",
@@ -388,7 +396,8 @@
           -3.24
         ],
         "fov_from": 46.0,
-        "fov_to": 39.0
+        "fov_to": 39.0,
+        "scene": "library"
       }
     },
     {
@@ -399,7 +408,7 @@
       "cue": "act-2",
       "camera": "反打门缝与人物",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "library",
       "composition": "tight silhouette",
       "action": "浮士德退到书架旁",
       "continuity": "第2幕，Preserve the silhouette axis",
@@ -428,7 +437,8 @@
           -3.21
         ],
         "fov_from": 42.0,
-        "fov_to": 42.0
+        "fov_to": 42.0,
+        "scene": "library"
       }
     },
     {
@@ -439,7 +449,7 @@
       "cue": "act-2",
       "camera": "低机位看影子越过地面",
       "prompt": "study",
-      "scene": "study",
+      "scene": "library",
       "composition": "close on the desk",
       "action": "影子与人物短暂重合",
       "continuity": "第2幕，Keep amber against crimson",
@@ -469,7 +479,8 @@
           0.46
         ],
         "fov_from": 37.0,
-        "fov_to": 34.0
+        "fov_to": 34.0,
+        "scene": "library"
       }
     },
     {
@@ -480,7 +491,7 @@
       "cue": "act-2",
       "camera": "拉远显出空房间",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "library",
       "composition": "centered threshold",
       "action": "门板缓慢向内打开",
       "continuity": "第2幕，End on crimson",
@@ -509,7 +520,8 @@
           -3.18
         ],
         "fov_from": 46.0,
-        "fov_to": 46.0
+        "fov_to": 46.0,
+        "scene": "library"
       }
     },
     {
@@ -520,7 +532,7 @@
       "cue": "act-3",
       "camera": "反打门缝与人物",
       "prompt": "study",
-      "scene": "study",
+      "scene": "corridor",
       "composition": "low tabletop close-up, centered on the brass key",
       "action": "钥匙悬起并旋转",
       "continuity": "第3幕，The candle flares as the key rises",
@@ -549,7 +561,8 @@
           -3.28
         ],
         "fov_from": 42.0,
-        "fov_to": 40.5
+        "fov_to": 40.5,
+        "scene": "corridor"
       }
     },
     {
@@ -560,7 +573,7 @@
       "cue": "act-3",
       "camera": "低机位看影子越过地面",
       "prompt": "portrait",
-      "scene": "study",
+      "scene": "corridor",
       "composition": "centered portrait",
       "action": "书页连续翻动",
       "continuity": "第3幕，Amber key light",
@@ -591,7 +604,8 @@
           -3.25
         ],
         "fov_from": 44.0,
-        "fov_to": 43.5
+        "fov_to": 43.5,
+        "scene": "corridor"
       }
     },
     {
@@ -602,7 +616,7 @@
       "cue": "act-3",
       "camera": "拉远显出空房间",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "corridor",
       "composition": "wide silhouette",
       "action": "浮士德猛然抬头",
       "continuity": "第3幕，Crimson marks the intrusion",
@@ -631,7 +645,8 @@
           -0.39
         ],
         "fov_from": 42.0,
-        "fov_to": 38.5
+        "fov_to": 38.5,
+        "scene": "corridor"
       }
     },
     {
@@ -642,7 +657,7 @@
       "cue": "act-3",
       "camera": "俯拍钥匙，快速推进",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "corridor",
       "composition": "tight silhouette",
       "action": "影子沿墙面爬行",
       "continuity": "第3幕，Preserve the silhouette axis",
@@ -671,7 +686,8 @@
           0.44
         ],
         "fov_from": 35.0,
-        "fov_to": 35.5
+        "fov_to": 35.5,
+        "scene": "corridor"
       }
     },
     {
@@ -682,7 +698,7 @@
       "cue": "act-3",
       "camera": "侧移掠过书页",
       "prompt": "study",
-      "scene": "study",
+      "scene": "corridor",
       "composition": "close on the desk",
       "action": "门环连续震动",
       "continuity": "第3幕，Keep amber against crimson",
@@ -712,7 +728,8 @@
           -0.35
         ],
         "fov_from": 40.0,
-        "fov_to": 38.5
+        "fov_to": 38.5,
+        "scene": "corridor"
       }
     },
     {
@@ -723,7 +740,7 @@
       "cue": "act-3",
       "camera": "推近浮士德的眼睛",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "corridor",
       "composition": "centered threshold",
       "action": "手伸向钥匙",
       "continuity": "第3幕，End on crimson",
@@ -752,7 +769,8 @@
           -3.18
         ],
         "fov_from": 46.0,
-        "fov_to": 47.5
+        "fov_to": 47.5,
+        "scene": "corridor"
       }
     },
     {
@@ -763,7 +781,7 @@
       "cue": "act-4",
       "camera": "俯拍钥匙，快速推进",
       "prompt": "study",
-      "scene": "study",
+      "scene": "contract",
       "composition": "low tabletop close-up, centered on the brass key",
       "action": "烛火熄灭又复燃",
       "continuity": "第4幕，The candle flares as the key rises",
@@ -792,7 +810,8 @@
           0.381
         ],
         "fov_from": 35.0,
-        "fov_to": 32.5
+        "fov_to": 32.5,
+        "scene": "contract"
       }
     },
     {
@@ -803,7 +822,7 @@
       "cue": "act-4",
       "camera": "侧移掠过书页",
       "prompt": "portrait",
-      "scene": "study",
+      "scene": "contract",
       "composition": "centered portrait",
       "action": "墨迹在纸上自行成字",
       "continuity": "第4幕，Amber key light",
@@ -834,7 +853,8 @@
           -3.26
         ],
         "fov_from": 44.0,
-        "fov_to": 37.5
+        "fov_to": 37.5,
+        "scene": "contract"
       }
     },
     {
@@ -845,7 +865,7 @@
       "cue": "act-4",
       "camera": "推近浮士德的眼睛",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "contract",
       "composition": "wide silhouette",
       "action": "门缝光线吞没桌面",
       "continuity": "第4幕，Crimson marks the intrusion",
@@ -874,7 +894,8 @@
           -3.23
         ],
         "fov_from": 46.0,
-        "fov_to": 40.5
+        "fov_to": 40.5,
+        "scene": "contract"
       }
     },
     {
@@ -885,7 +906,7 @@
       "cue": "act-4",
       "camera": "横摇追踪墙上影子",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "contract",
       "composition": "tight silhouette",
       "action": "浮士德退到书架旁",
       "continuity": "第4幕，Preserve the silhouette axis",
@@ -914,7 +935,8 @@
           -0.37
         ],
         "fov_from": 38.0,
-        "fov_to": 35.5
+        "fov_to": 35.5,
+        "scene": "contract"
       }
     },
     {
@@ -925,7 +947,7 @@
       "cue": "act-4",
       "camera": "三次叩门逐次逼近",
       "prompt": "study",
-      "scene": "study",
+      "scene": "contract",
       "composition": "close on the desk",
       "action": "影子与人物短暂重合",
       "continuity": "第4幕，Keep amber against crimson",
@@ -955,7 +977,8 @@
           -3.2
         ],
         "fov_from": 44.0,
-        "fov_to": 44.5
+        "fov_to": 44.5,
+        "scene": "contract"
       }
     },
     {
@@ -966,7 +989,7 @@
       "cue": "act-4",
       "camera": "环绕书桌寻找钥匙",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "contract",
       "composition": "centered threshold",
       "action": "门板缓慢向内打开",
       "continuity": "第4幕，End on crimson",
@@ -995,7 +1018,8 @@
           -0.331
         ],
         "fov_from": 42.0,
-        "fov_to": 35.5
+        "fov_to": 35.5,
+        "scene": "contract"
       }
     },
     {
@@ -1006,7 +1030,7 @@
       "cue": "act-5",
       "camera": "横摇追踪墙上影子",
       "prompt": "study",
-      "scene": "study",
+      "scene": "threshold",
       "composition": "low tabletop close-up, centered on the brass key",
       "action": "钥匙悬起并旋转",
       "continuity": "第5幕，The candle flares as the key rises",
@@ -1035,7 +1059,8 @@
           -0.429
         ],
         "fov_from": 38.0,
-        "fov_to": 37.0
+        "fov_to": 37.0,
+        "scene": "threshold"
       }
     },
     {
@@ -1046,7 +1071,7 @@
       "cue": "act-5",
       "camera": "三次叩门逐次逼近",
       "prompt": "portrait",
-      "scene": "study",
+      "scene": "threshold",
       "composition": "centered portrait",
       "action": "书页连续翻动",
       "continuity": "第5幕，Amber key light",
@@ -1077,7 +1102,8 @@
           -3.26
         ],
         "fov_from": 44.0,
-        "fov_to": 39.0
+        "fov_to": 39.0,
+        "scene": "threshold"
       }
     },
     {
@@ -1088,7 +1114,7 @@
       "cue": "act-5",
       "camera": "环绕书桌寻找钥匙",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "threshold",
       "composition": "wide silhouette",
       "action": "浮士德猛然抬头",
       "continuity": "第5幕，Crimson marks the intrusion",
@@ -1117,7 +1143,8 @@
           0.42
         ],
         "fov_from": 39.0,
-        "fov_to": 34.0
+        "fov_to": 34.0,
+        "scene": "threshold"
       }
     },
     {
@@ -1128,7 +1155,7 @@
       "cue": "act-5",
       "camera": "反打门缝与人物",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "threshold",
       "composition": "tight silhouette",
       "action": "影子沿墙面爬行",
       "continuity": "第5幕，Preserve the silhouette axis",
@@ -1157,7 +1184,8 @@
           -3.21
         ],
         "fov_from": 42.0,
-        "fov_to": 42.0
+        "fov_to": 42.0,
+        "scene": "threshold"
       }
     },
     {
@@ -1168,7 +1196,7 @@
       "cue": "act-5",
       "camera": "低机位看影子越过地面",
       "prompt": "study",
-      "scene": "study",
+      "scene": "threshold",
       "composition": "close on the desk",
       "action": "门环连续震动",
       "continuity": "第5幕，Keep amber against crimson",
@@ -1198,7 +1226,8 @@
           -3.2
         ],
         "fov_from": 44.0,
-        "fov_to": 46.0
+        "fov_to": 46.0,
+        "scene": "threshold"
       }
     },
     {
@@ -1209,7 +1238,7 @@
       "cue": "act-5",
       "camera": "拉远显出空房间",
       "prompt": "shadow",
-      "scene": "study",
+      "scene": "threshold",
       "composition": "centered threshold",
       "action": "手伸向钥匙",
       "continuity": "第5幕，End on crimson",
@@ -1238,7 +1267,8 @@
           0.479
         ],
         "fov_from": 39.0,
-        "fov_to": 34.0
+        "fov_to": 34.0,
+        "scene": "threshold"
       }
     }
   ],
