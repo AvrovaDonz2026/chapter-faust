@@ -6,6 +6,7 @@ var assets: Dictionary = {}
 var textures: Dictionary = {}
 var video := VideoStreamPlayer.new()
 var music := AudioStreamPlayer.new()
+var audio_offset := 0.0
 var elapsed := 0.0
 var shot_start := 0.0
 var shot_index := 0
@@ -78,9 +79,11 @@ func _ready() -> void:
     get_tree().quit(1)
     return
  if not movie:
-  music.stream = load(episode.audio) if ResourceLoader.exists(episode.audio) else null
-  if not music.stream: push_error("Missing soundtrack: " + episode.audio)
-  elif not smoke: music.play()
+  var audio_path := authored_audio_path()
+  audio_offset = authored_audio_offset()
+  music.stream = load(audio_path) if not audio_path.is_empty() and ResourceLoader.exists(audio_path) else null
+  if not music.stream: push_error("Missing soundtrack: " + audio_path)
+  elif not smoke: music.play(audio_offset)
  if smoke:
   var cursor := 0.0
   var failed := not smoke_pacing() or not is_instance_valid(music.stream)
@@ -131,7 +134,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
   for i in target: cursor += float(episode.shots[i].duration)
   if target > 0: cursor += wipe_duration / 2.0
   seek(cursor)
-  if music.stream: music.seek(cursor)
+  if music.stream: music.seek(cursor + audio_offset)
  queue_redraw()
 
 func _process(delta: float) -> void:
@@ -180,6 +183,26 @@ func seek(time: float) -> void:
 func shot_has_3d(shot: Dictionary) -> bool:
  var spec: Variant = shot.get("godot_3d")
  return is_instance_valid(stage) and spec is Dictionary and stage.supports(spec)
+
+func authored_audio_path() -> String:
+ var authored: Variant = episode.get("audio", "")
+ if authored is String:
+  return authored
+ if authored is Dictionary:
+  var tracks: Array = authored.get("tracks", [])
+  for track in tracks:
+   if track is Dictionary and (bool(track.get("preview", false)) or str(track.get("role", "music")) == "music"):
+    return str(track.get("path", ""))
+ return ""
+
+func authored_audio_offset() -> float:
+ var authored: Variant = episode.get("audio", "")
+ if authored is Dictionary:
+  var tracks: Array = authored.get("tracks", [])
+  for track in tracks:
+   if track is Dictionary and (bool(track.get("preview", false)) or str(track.get("role", "music")) == "music"):
+    return maxf(0.0, float(track.get("offset_seconds", 0.0)))
+ return 0.0
 
 func total_duration() -> float:
  var value := 0.0

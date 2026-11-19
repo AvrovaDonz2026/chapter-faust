@@ -10,7 +10,21 @@
     "min_duration_seconds": 180,
     "max_duration_seconds": 300
   },
-  "audio": "res://audio/episode-001-music.wav",
+  "audio": {
+    "tracks": [
+      {
+        "id": "music",
+        "role": "music",
+        "path": "res://audio/episode-001-music.wav",
+        "offset_seconds": 0.0,
+        "preview": true
+      }
+    ],
+    "narration": {
+      "status": "not-authored",
+      "tracks": []
+    }
+  },
   "style": "图像小说，琥珀烛光，墨色阴影，深红几何",
   "pacing": {
     "hook_deadline_seconds": 5,
