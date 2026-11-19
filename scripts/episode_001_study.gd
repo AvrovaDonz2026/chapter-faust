@@ -82,7 +82,7 @@ func pose(spec: Dictionary, u: float, time: float, hook_lift := 0.0, hook_turn :
 	var flicker := sin(time * 15.7) * 0.08 + sin(time * 24.1) * 0.045
 	flame.scale = Vector3(1.0 - flicker, 1.0 + flicker + 0.45 * hook_lift, 1.0 - flicker)
 	flame.rotation.z = flicker * 0.8 - 0.40 * hook_lift
-	wick_light.light_energy = 1.7 + 2.5 * flicker + 1.05 * hook_lift
+	wick_light.light_energy = 1.35 + 1.15 * flicker + 0.65 * hook_lift
 	head.rotation.x = -0.20 if beat == &"read" else lerpf(-0.20, 0.08, smoothstep(0.03, 0.55, u)) if beat == &"look_up" else 0.08
 	head.rotation.y = 0.0 if beat in [&"read", &"look_up"] else 0.40
 	head.rotation.x += 0.015 * sin(time * 2.8)
@@ -103,6 +103,7 @@ func pose(spec: Dictionary, u: float, time: float, hook_lift := 0.0, hook_turn :
 	shadow.visible = beat in [&"shadow", &"knock"]
 	shadow.position.x = lerpf(-0.91, 0.42, smoothstep(0.03, 0.70, u)) if beat == &"shadow" else 0.42
 	shadow.position.z = -3.263
+	shadow.position.y = 0.22 + 0.025 * sin(time * 1.7)
 	shadow.scale.y = (lerpf(0.82, 1.04, ease_u) if beat == &"shadow" else 1.04) + 0.018 * sin(time * 3.2)
 	shadow.rotation.z = knocks * 0.08
 	door.rotation.y = -1.37 * smoothstep(0.11, 0.81, u) if beat == &"open" else -0.035 * knocks
@@ -149,6 +150,9 @@ func _build_alternate_scenes() -> void:
 	for x in [-1.22, 1.22]:
 		_box(contract, "TableLeg", Vector3(x, 0.54, -0.2), Vector3(0.16, 1.0, 0.90), "34252c")
 	_box(contract, "ContractPaper", Vector3(0.0, 1.19, -0.2), Vector3(1.35, 0.025, 0.75), "c5a777", 0.04)
+	for corner in [-1, 1]:
+		var seal := _oval(contract, "WaxSeal", Vector3(corner * 0.49, 1.213, -0.43), Vector3(0.11, 0.022, 0.11), "9e3547", 0.10)
+		seal.rotation.y = corner * 0.18
 	_box(contract, "PaperBorder", Vector3(0.0, 1.208, -0.2), Vector3(1.26, 0.008, 0.66), "755440")
 	for line in range(4):
 		_box(contract, "ContractWriting", Vector3(-0.20, 1.216, -0.36 + line * 0.10), Vector3(0.64 - line * 0.06, 0.008, 0.018), "493940")
@@ -169,6 +173,9 @@ func _build_alternate_scenes() -> void:
 	_box(threshold_scene, "RedPortal", Vector3(0, 2.0, -3.0), Vector3(2.7, 3.8, 0.08), "b52c52", 0.85)
 	_box(threshold_scene, "PortalCore", Vector3(0, 2.0, -2.94), Vector3(1.75, 2.95, 0.035), "42152e", 0.72)
 	_box(threshold_scene, "PortalHorizon", Vector3(0, 1.35, -2.91), Vector3(1.55, 0.035, 0.025), "ff6175", 1.1)
+	for y in [0.55, 1.05, 1.55, 2.05, 2.55, 3.05]:
+		var ripple := _box(threshold_scene, "PortalRipple", Vector3(0, y, -2.905), Vector3(1.20 - 0.10 * absf(y - 1.8), 0.012, 0.018), "e24864", 0.48)
+		ripple.rotation.z = 0.025 * sin(y * 2.1)
 	scene_sets = {"library": library, "corridor": corridor, "contract": contract, "threshold": threshold_scene}
 
 func _material(color_code: String, emission := 0.0) -> StandardMaterial3D:
@@ -232,6 +239,7 @@ func _build_room() -> void:
 	for x in [-1.43, 1.53]:
 		_box(room, "WallPanelSide", Vector3(x, 2.2, -3.15), Vector3(0.08, 3.0, 0.08), "78635a")
 	_box(room, "WallPanelBottom", Vector3(0.05, 0.72, -3.15), Vector3(3.1, 0.10, 0.08), "78635a")
+	_box(room, "WallPanelInset", Vector3(0.05, 2.23, -3.13), Vector3(2.80, 2.82, 0.025), "413b48")
 	for i in range(17):
 		_box(room, "Floorboard", Vector3(-4.0 + i * 0.50, -0.01, 0), Vector3(0.484, 0.032, 9), ["433438", "48383b", "4d3c3e"][i % 3])
 	_box(room, "WestWall", Vector3(-4.10, 2.32, -0.5), Vector3(0.2, 4.8, 6.0), "424556")
@@ -263,6 +271,10 @@ func _build_desk() -> void:
 	_box(desk, "DeskTop", Vector3(-0.29, 1.04, 0.35), Vector3(2.83, 0.16, 1.38), "654438")
 	_box(desk, "DeskInlay", Vector3(-0.29, 1.125, 0.35), Vector3(2.62, 0.012, 1.17), "98704d")
 	_box(desk, "DeskWritingSurface", Vector3(-0.29, 1.135, 0.35), Vector3(2.54, 0.012, 1.09), "564044")
+	for grain in range(7):
+		var x := -1.42 + grain * 0.37
+		var streak := _box(desk, "WoodGrain", Vector3(x, 1.143, 0.35 + 0.26 * sin(float(grain) * 1.7)), Vector3(0.22, 0.003, 0.012), "795c4d")
+		streak.rotation.y = -0.08 + 0.025 * grain
 	_box(desk, "Apron", Vector3(-0.29, 0.91, 0.93), Vector3(2.66, 0.18, 0.13), "432e2e")
 	for x in [-1.52, 0.94]:
 		for z in [-0.19, 0.91]:
@@ -292,15 +304,15 @@ func _build_desk() -> void:
 	_taper(desk, "Wax", Vector3(0.49, 1.36, 0.18), 0.36, 0.061, 0.069, "ecdcb2", 18)
 	_taper(desk, "Wick", Vector3(0.49, 1.552, 0.18), 0.04, 0.01, 0.011, "281c24")
 	flame = _pivot(desk, "FlameScale", Vector3(0.49, 1.63, 0.18))
-	var shell := _oval(flame, "Flame", Vector3.ZERO, Vector3.ONE, "ffab4d", 1.0)
+	var shell := _oval(flame, "Flame", Vector3(0, 0.014, 0), Vector3(0.88, 1.15, 0.82), "ffab4d", 0.8)
 	var flame_shape := SphereMesh.new()
 	flame_shape.radius = 0.046
 	flame_shape.height = 0.158
 	flame_shape.radial_segments = 12
 	flame_shape.rings = 6
 	shell.mesh = flame_shape
-	_oval(flame, "FlameCore", Vector3(0, -0.022, 0.034), Vector3(0.038, 0.088, 0.023), "fff1b0", 1.2)
-	wick_light = _omni(desk, "Candlelight", Vector3(0.49, 1.70, 0.24), Color("ffab62"), 1.7, 4.2, true)
+	_oval(flame, "FlameCore", Vector3(0, -0.022, 0.034), Vector3(0.032, 0.076, 0.022), "fff1b0", 0.9)
+	wick_light = _omni(desk, "Candlelight", Vector3(0.49, 1.70, 0.24), Color("ffab62"), 1.35, 4.2, false)
 	key = _pivot(desk, "BrassKey", KEY_REST)
 	key.rotation.y = -0.42
 	var ring := TorusMesh.new()
@@ -331,11 +343,14 @@ func _build_faust() -> void:
 	head = _pivot(faust, "HeadPivot", Vector3(0, 2.00, 0.047))
 	_oval(head, "Head", Vector3(0, 0.26, 0), Vector3(0.43, 0.59, 0.42), "856259")
 	_oval(head, "HairCap", Vector3(0, 0.45, -0.045), Vector3(0.48, 0.38, 0.44), "302b36")
+	_oval(head, "Hairline", Vector3(0, 0.355, 0.169), Vector3(0.37, 0.09, 0.13), "302b36")
 	_oval(head, "SideburnLeft", Vector3(-0.19, 0.28, 0.075), Vector3(0.12, 0.33, 0.19), "302b36")
 	_oval(head, "SideburnRight", Vector3(0.19, 0.28, 0.075), Vector3(0.12, 0.33, 0.19), "302b36")
 	_oval(head, "Nose", Vector3(0, 0.22, 0.218), Vector3(0.105, 0.153, 0.135), "a07862")
 	_oval(head, "Beard", Vector3(0, 0.036, 0.139), Vector3(0.326, 0.40, 0.25), "423740")
 	_oval(head, "BeardPoint", Vector3(0, -0.13, 0.13), Vector3(0.20, 0.25, 0.20), "423740")
+	_oval(head, "CheekLeft", Vector3(-0.135, 0.105, 0.171), Vector3(0.11, 0.12, 0.035), "946e61")
+	_oval(head, "CheekRight", Vector3(0.135, 0.105, 0.171), Vector3(0.11, 0.12, 0.035), "946e61")
 	_oval(head, "MoustacheLeft", Vector3(-0.075, 0.14, 0.235), Vector3(0.16, 0.08, 0.09), "423740")
 	_oval(head, "MoustacheRight", Vector3(0.075, 0.14, 0.235), Vector3(0.16, 0.08, 0.09), "423740")
 	for x in [-0.109, 0.109]:
@@ -399,4 +414,6 @@ func _light_study() -> void:
 	world.environment = environment
 	add_child(world)
 	_omni(self, "MoonFill", Vector3(-2.96, 3.66, 1.3), Color("999fda"), 1.24, 8.5, false)
-	_omni(self, "WarmDeskFill", Vector3(0.08, 2.5, 1.95), Color("ffb380"), 0.76, 5.3, false)
+	_omni(self, "WarmDeskFill", Vector3(0.08, 2.5, 1.95), Color("ffb380"), 0.58, 5.3, false)
+	_omni(self, "FaceFill", Vector3(-0.92, 2.48, 1.08), Color("d7a18b"), 0.42, 3.1, false)
+	_omni(self, "RimLight", Vector3(0.72, 3.04, -1.28), Color("9d8eb8"), 0.62, 4.8, false)
