@@ -1,0 +1,7 @@
+{
+  "episode": "episode-001",
+  "path": "res://audio/episode-001-music.wav",
+  "source": "tools/generate_music.py",
+  "license": "CC0-1.0",
+  "speech": false
+}

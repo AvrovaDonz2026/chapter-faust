@@ -7,8 +7,8 @@
     "height": 1920,
     "fps": 24,
     "aspect": "9:16",
-    "min_duration_seconds": 30,
-    "max_duration_seconds": 90
+    "min_duration_seconds": 180,
+    "max_duration_seconds": 300
   },
   "audio": "res://audio/episode-001-music.wav",
   "style": "图像小说，琥珀烛光，墨色阴影，深红几何",
@@ -22,23 +22,23 @@
   "shots": [
     {
       "id": "shot-01",
-      "duration": 4.0,
+      "duration": 6.0,
       "asset": "faust-study-night",
-      "caption": "午夜。\n最后一个问题。",
-      "cue": "pulse",
+      "caption": "午夜。",
+      "cue": "act-1",
       "camera": "snap push toward the rising key",
       "prompt": "study",
       "scene": "study",
       "composition": "low tabletop close-up, centered on the brass key",
-      "action": "The key rises by itself, turns in midair, then drops back to the desk",
-      "continuity": "The candle flares as the key rises",
+      "action": "召唤：The key rises by itself, turns in midair, then drops back to the desk",
+      "continuity": "第1幕，The candle flares as the key rises",
       "zoom_start": 1.04,
       "zoom_end": 1.18,
       "hook": {
         "effect": "levitating_key",
         "start_seconds": 0.5,
         "peak_seconds": 2,
-        "settle_seconds": 4
+        "settle_seconds": 3.5
       },
       "godot_3d": {
         "beat": "key_hook",
@@ -68,16 +68,16 @@
     },
     {
       "id": "shot-02",
-      "duration": 4.0,
+      "duration": 6.0,
       "asset": "faust-portrait",
-      "caption": "每本书都有答案。\n唯独没有门。",
-      "cue": "pulse",
+      "caption": "最后一个问题。",
+      "cue": "act-1",
       "camera": "pan right",
       "prompt": "portrait",
       "scene": "study",
       "composition": "centered portrait",
-      "action": "Faust looks up",
-      "continuity": "Amber key light",
+      "action": "召唤：Faust looks up",
+      "continuity": "第1幕，Amber key light",
       "zoom_start": 1.08,
       "zoom_end": 1.2,
       "pan_start": -16,
@@ -110,16 +110,16 @@
     },
     {
       "id": "shot-03",
-      "duration": 5.0,
+      "duration": 6.0,
       "asset": "faust-shadow",
-      "caption": "然后，影子动了。",
-      "cue": "rising",
+      "caption": "书页自己翻动。",
+      "cue": "act-1",
       "camera": "crash zoom",
       "prompt": "shadow",
       "scene": "study",
       "composition": "wide silhouette",
-      "action": "A shadow crosses the wall",
-      "continuity": "Crimson marks the intrusion",
+      "action": "召唤：A shadow crosses the wall",
+      "continuity": "第1幕，Crimson marks the intrusion",
       "zoom_start": 1,
       "zoom_end": 1.2,
       "godot_3d": {
@@ -152,14 +152,14 @@
       "id": "shot-04",
       "duration": 6.0,
       "asset": "faust-shadow",
-      "caption": "三声叩门。\n门外无人。",
-      "cue": "knock",
+      "caption": "烛火灭了。",
+      "cue": "act-1",
       "camera": "creep toward the threshold; recoil at each knock",
       "prompt": "shadow",
       "scene": "study",
       "composition": "tight silhouette",
-      "action": "Faust listens to three knocks",
-      "continuity": "Preserve the silhouette axis",
+      "action": "召唤：Faust listens to three knocks",
+      "continuity": "第1幕，Preserve the silhouette axis",
       "zoom_start": 1.23,
       "zoom_end": 1.32,
       "godot_3d": {
@@ -190,16 +190,16 @@
     },
     {
       "id": "shot-05",
-      "duration": 5.5,
+      "duration": 6.0,
       "asset": "faust-study-night",
-      "caption": "他握住那把\n刚刚出现的钥匙。",
-      "cue": "release",
+      "caption": "再亮时，影子不在原处。",
+      "cue": "act-1",
       "camera": "orbit",
       "prompt": "study",
       "scene": "study",
       "composition": "close on the desk",
-      "action": "Faust reaches for the key from the opening",
-      "continuity": "Keep amber against crimson",
+      "action": "召唤：Faust reaches for the key from the opening",
+      "continuity": "第1幕，Keep amber against crimson",
       "zoom_start": 1.12,
       "zoom_end": 1.25,
       "pan_end": 18,
@@ -231,16 +231,1012 @@
     },
     {
       "id": "shot-06",
-      "duration": 5.5,
+      "duration": 6.0,
       "asset": "faust-shadow",
-      "caption": "浮士德打开了门。\n画面切黑。",
-      "cue": "resolve",
+      "caption": "书架后传来低语。",
+      "cue": "act-1",
       "camera": "pull back",
       "prompt": "shadow",
       "scene": "study",
       "composition": "centered threshold",
-      "action": "The threshold opens",
-      "continuity": "End on crimson",
+      "action": "召唤：The threshold opens",
+      "continuity": "第1幕，End on crimson",
+      "zoom_start": 1.24,
+      "zoom_end": 1,
+      "godot_3d": {
+        "beat": "open",
+        "camera_from": [
+          1.51,
+          1.69,
+          0.39
+        ],
+        "camera_to": [
+          1.75,
+          1.87,
+          1.48
+        ],
+        "target_from": [
+          1.35,
+          1.52,
+          -3.23
+        ],
+        "target_to": [
+          1.35,
+          1.55,
+          -3.23
+        ],
+        "fov_from": 44,
+        "fov_to": 46
+      }
+    },
+    {
+      "id": "shot-07",
+      "duration": 6.0,
+      "asset": "faust-study-night",
+      "caption": "每本书都有答案。",
+      "cue": "act-2",
+      "camera": "snap push toward the rising key",
+      "prompt": "study",
+      "scene": "study",
+      "composition": "low tabletop close-up, centered on the brass key",
+      "action": "试探：The key rises by itself, turns in midair, then drops back to the desk",
+      "continuity": "第2幕，The candle flares as the key rises",
+      "zoom_start": 1.04,
+      "zoom_end": 1.18,
+      "hook": {
+        "effect": "levitating_key",
+        "start_seconds": 0.5,
+        "peak_seconds": 2,
+        "settle_seconds": 3.5
+      },
+      "godot_3d": {
+        "beat": "key_hook",
+        "camera_from": [
+          0.88,
+          1.9,
+          2.38
+        ],
+        "camera_to": [
+          0.59,
+          1.78,
+          1.96
+        ],
+        "target_from": [
+          0.34,
+          1.4,
+          0.59
+        ],
+        "target_to": [
+          0.35,
+          1.48,
+          0.59
+        ],
+        "fov_from": 45,
+        "fov_to": 40
+      }
+    },
+    {
+      "id": "shot-08",
+      "duration": 6.0,
+      "asset": "faust-portrait",
+      "caption": "唯独没有门。",
+      "cue": "act-2",
+      "camera": "pan right",
+      "prompt": "portrait",
+      "scene": "study",
+      "composition": "centered portrait",
+      "action": "试探：Faust looks up",
+      "continuity": "第2幕，Amber key light",
+      "zoom_start": 1.08,
+      "zoom_end": 1.2,
+      "pan_start": -16,
+      "pan_end": 16,
+      "godot_3d": {
+        "beat": "look_up",
+        "camera_from": [
+          -1.24,
+          2.38,
+          2.11
+        ],
+        "camera_to": [
+          -0.45,
+          2.43,
+          1.91
+        ],
+        "target_from": [
+          -0.57,
+          1.99,
+          -0.31
+        ],
+        "target_to": [
+          -0.52,
+          2.05,
+          -0.38
+        ],
+        "fov_from": 40,
+        "fov_to": 37
+      }
+    },
+    {
+      "id": "shot-09",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "他翻遍最后一页。",
+      "cue": "act-2",
+      "camera": "crash zoom",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "wide silhouette",
+      "action": "试探：A shadow crosses the wall",
+      "continuity": "第2幕，Crimson marks the intrusion",
+      "zoom_start": 1,
+      "zoom_end": 1.2,
+      "godot_3d": {
+        "beat": "shadow",
+        "camera_from": [
+          0.8,
+          2.14,
+          2.91
+        ],
+        "camera_to": [
+          0.96,
+          2.07,
+          1.9
+        ],
+        "target_from": [
+          0.3,
+          1.69,
+          -3.23
+        ],
+        "target_to": [
+          0.64,
+          1.67,
+          -3.23
+        ],
+        "fov_from": 44,
+        "fov_to": 39
+      }
+    },
+    {
+      "id": "shot-10",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "墨水写出一个名字。",
+      "cue": "act-2",
+      "camera": "creep toward the threshold; recoil at each knock",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "tight silhouette",
+      "action": "试探：Faust listens to three knocks",
+      "continuity": "第2幕，Preserve the silhouette axis",
+      "zoom_start": 1.23,
+      "zoom_end": 1.32,
+      "godot_3d": {
+        "beat": "knock",
+        "camera_from": [
+          1.25,
+          1.94,
+          0.45
+        ],
+        "camera_to": [
+          1.19,
+          1.89,
+          0.12
+        ],
+        "target_from": [
+          0.91,
+          1.64,
+          -3.22
+        ],
+        "target_to": [
+          0.99,
+          1.61,
+          -3.22
+        ],
+        "fov_from": 44,
+        "fov_to": 42
+      }
+    },
+    {
+      "id": "shot-11",
+      "duration": 6.0,
+      "asset": "faust-study-night",
+      "caption": "门缝里没有风。",
+      "cue": "act-2",
+      "camera": "orbit",
+      "prompt": "study",
+      "scene": "study",
+      "composition": "close on the desk",
+      "action": "试探：Faust reaches for the key from the opening",
+      "continuity": "第2幕，Keep amber against crimson",
+      "zoom_start": 1.12,
+      "zoom_end": 1.25,
+      "pan_end": 18,
+      "godot_3d": {
+        "beat": "key",
+        "camera_from": [
+          1.43,
+          2.62,
+          1.91
+        ],
+        "camera_to": [
+          0.9,
+          2.51,
+          2.22
+        ],
+        "target_from": [
+          0.14,
+          1.26,
+          0.4
+        ],
+        "target_to": [
+          0.22,
+          1.22,
+          0.43
+        ],
+        "fov_from": 37,
+        "fov_to": 34
+      }
+    },
+    {
+      "id": "shot-12",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "只有三声叩门。",
+      "cue": "act-2",
+      "camera": "pull back",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "centered threshold",
+      "action": "试探：The threshold opens",
+      "continuity": "第2幕，End on crimson",
+      "zoom_start": 1.24,
+      "zoom_end": 1,
+      "godot_3d": {
+        "beat": "open",
+        "camera_from": [
+          1.51,
+          1.69,
+          0.39
+        ],
+        "camera_to": [
+          1.75,
+          1.87,
+          1.48
+        ],
+        "target_from": [
+          1.35,
+          1.52,
+          -3.23
+        ],
+        "target_to": [
+          1.35,
+          1.55,
+          -3.23
+        ],
+        "fov_from": 44,
+        "fov_to": 46
+      }
+    },
+    {
+      "id": "shot-13",
+      "duration": 6.0,
+      "asset": "faust-study-night",
+      "caption": "然后，影子动了。",
+      "cue": "act-3",
+      "camera": "snap push toward the rising key",
+      "prompt": "study",
+      "scene": "study",
+      "composition": "low tabletop close-up, centered on the brass key",
+      "action": "交易：The key rises by itself, turns in midair, then drops back to the desk",
+      "continuity": "第3幕，The candle flares as the key rises",
+      "zoom_start": 1.04,
+      "zoom_end": 1.18,
+      "hook": {
+        "effect": "levitating_key",
+        "start_seconds": 0.5,
+        "peak_seconds": 2,
+        "settle_seconds": 3.5
+      },
+      "godot_3d": {
+        "beat": "key_hook",
+        "camera_from": [
+          0.88,
+          1.9,
+          2.38
+        ],
+        "camera_to": [
+          0.59,
+          1.78,
+          1.96
+        ],
+        "target_from": [
+          0.34,
+          1.4,
+          0.59
+        ],
+        "target_to": [
+          0.35,
+          1.48,
+          0.59
+        ],
+        "fov_from": 45,
+        "fov_to": 40
+      }
+    },
+    {
+      "id": "shot-14",
+      "duration": 6.0,
+      "asset": "faust-portrait",
+      "caption": "第一声。",
+      "cue": "act-3",
+      "camera": "pan right",
+      "prompt": "portrait",
+      "scene": "study",
+      "composition": "centered portrait",
+      "action": "交易：Faust looks up",
+      "continuity": "第3幕，Amber key light",
+      "zoom_start": 1.08,
+      "zoom_end": 1.2,
+      "pan_start": -16,
+      "pan_end": 16,
+      "godot_3d": {
+        "beat": "look_up",
+        "camera_from": [
+          -1.24,
+          2.38,
+          2.11
+        ],
+        "camera_to": [
+          -0.45,
+          2.43,
+          1.91
+        ],
+        "target_from": [
+          -0.57,
+          1.99,
+          -0.31
+        ],
+        "target_to": [
+          -0.52,
+          2.05,
+          -0.38
+        ],
+        "fov_from": 40,
+        "fov_to": 37
+      }
+    },
+    {
+      "id": "shot-15",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "第二声。",
+      "cue": "act-3",
+      "camera": "crash zoom",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "wide silhouette",
+      "action": "交易：A shadow crosses the wall",
+      "continuity": "第3幕，Crimson marks the intrusion",
+      "zoom_start": 1,
+      "zoom_end": 1.2,
+      "godot_3d": {
+        "beat": "shadow",
+        "camera_from": [
+          0.8,
+          2.14,
+          2.91
+        ],
+        "camera_to": [
+          0.96,
+          2.07,
+          1.9
+        ],
+        "target_from": [
+          0.3,
+          1.69,
+          -3.23
+        ],
+        "target_to": [
+          0.64,
+          1.67,
+          -3.23
+        ],
+        "fov_from": 44,
+        "fov_to": 39
+      }
+    },
+    {
+      "id": "shot-16",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "第三声。",
+      "cue": "act-3",
+      "camera": "creep toward the threshold; recoil at each knock",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "tight silhouette",
+      "action": "交易：Faust listens to three knocks",
+      "continuity": "第3幕，Preserve the silhouette axis",
+      "zoom_start": 1.23,
+      "zoom_end": 1.32,
+      "godot_3d": {
+        "beat": "knock",
+        "camera_from": [
+          1.25,
+          1.94,
+          0.45
+        ],
+        "camera_to": [
+          1.19,
+          1.89,
+          0.12
+        ],
+        "target_from": [
+          0.91,
+          1.64,
+          -3.22
+        ],
+        "target_to": [
+          0.99,
+          1.61,
+          -3.22
+        ],
+        "fov_from": 44,
+        "fov_to": 42
+      }
+    },
+    {
+      "id": "shot-17",
+      "duration": 6.0,
+      "asset": "faust-study-night",
+      "caption": "门外无人。",
+      "cue": "act-3",
+      "camera": "orbit",
+      "prompt": "study",
+      "scene": "study",
+      "composition": "close on the desk",
+      "action": "交易：Faust reaches for the key from the opening",
+      "continuity": "第3幕，Keep amber against crimson",
+      "zoom_start": 1.12,
+      "zoom_end": 1.25,
+      "pan_end": 18,
+      "godot_3d": {
+        "beat": "key",
+        "camera_from": [
+          1.43,
+          2.62,
+          1.91
+        ],
+        "camera_to": [
+          0.9,
+          2.51,
+          2.22
+        ],
+        "target_from": [
+          0.14,
+          1.26,
+          0.4
+        ],
+        "target_to": [
+          0.22,
+          1.22,
+          0.43
+        ],
+        "fov_from": 37,
+        "fov_to": 34
+      }
+    },
+    {
+      "id": "shot-18",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "门内，却多了一个人。",
+      "cue": "act-3",
+      "camera": "pull back",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "centered threshold",
+      "action": "交易：The threshold opens",
+      "continuity": "第3幕，End on crimson",
+      "zoom_start": 1.24,
+      "zoom_end": 1,
+      "godot_3d": {
+        "beat": "open",
+        "camera_from": [
+          1.51,
+          1.69,
+          0.39
+        ],
+        "camera_to": [
+          1.75,
+          1.87,
+          1.48
+        ],
+        "target_from": [
+          1.35,
+          1.52,
+          -3.23
+        ],
+        "target_to": [
+          1.35,
+          1.55,
+          -3.23
+        ],
+        "fov_from": 44,
+        "fov_to": 46
+      }
+    },
+    {
+      "id": "shot-19",
+      "duration": 6.0,
+      "asset": "faust-study-night",
+      "caption": "浮士德没有后退。",
+      "cue": "act-4",
+      "camera": "snap push toward the rising key",
+      "prompt": "study",
+      "scene": "study",
+      "composition": "low tabletop close-up, centered on the brass key",
+      "action": "越界：The key rises by itself, turns in midair, then drops back to the desk",
+      "continuity": "第4幕，The candle flares as the key rises",
+      "zoom_start": 1.04,
+      "zoom_end": 1.18,
+      "hook": {
+        "effect": "levitating_key",
+        "start_seconds": 0.5,
+        "peak_seconds": 2,
+        "settle_seconds": 3.5
+      },
+      "godot_3d": {
+        "beat": "key_hook",
+        "camera_from": [
+          0.88,
+          1.9,
+          2.38
+        ],
+        "camera_to": [
+          0.59,
+          1.78,
+          1.96
+        ],
+        "target_from": [
+          0.34,
+          1.4,
+          0.59
+        ],
+        "target_to": [
+          0.35,
+          1.48,
+          0.59
+        ],
+        "fov_from": 45,
+        "fov_to": 40
+      }
+    },
+    {
+      "id": "shot-20",
+      "duration": 6.0,
+      "asset": "faust-portrait",
+      "caption": "影子伸出手。",
+      "cue": "act-4",
+      "camera": "pan right",
+      "prompt": "portrait",
+      "scene": "study",
+      "composition": "centered portrait",
+      "action": "越界：Faust looks up",
+      "continuity": "第4幕，Amber key light",
+      "zoom_start": 1.08,
+      "zoom_end": 1.2,
+      "pan_start": -16,
+      "pan_end": 16,
+      "godot_3d": {
+        "beat": "look_up",
+        "camera_from": [
+          -1.24,
+          2.38,
+          2.11
+        ],
+        "camera_to": [
+          -0.45,
+          2.43,
+          1.91
+        ],
+        "target_from": [
+          -0.57,
+          1.99,
+          -0.31
+        ],
+        "target_to": [
+          -0.52,
+          2.05,
+          -0.38
+        ],
+        "fov_from": 40,
+        "fov_to": 37
+      }
+    },
+    {
+      "id": "shot-21",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "代价写在火里。",
+      "cue": "act-4",
+      "camera": "crash zoom",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "wide silhouette",
+      "action": "越界：A shadow crosses the wall",
+      "continuity": "第4幕，Crimson marks the intrusion",
+      "zoom_start": 1,
+      "zoom_end": 1.2,
+      "godot_3d": {
+        "beat": "shadow",
+        "camera_from": [
+          0.8,
+          2.14,
+          2.91
+        ],
+        "camera_to": [
+          0.96,
+          2.07,
+          1.9
+        ],
+        "target_from": [
+          0.3,
+          1.69,
+          -3.23
+        ],
+        "target_to": [
+          0.64,
+          1.67,
+          -3.23
+        ],
+        "fov_from": 44,
+        "fov_to": 39
+      }
+    },
+    {
+      "id": "shot-22",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "他签下自己的名字。",
+      "cue": "act-4",
+      "camera": "creep toward the threshold; recoil at each knock",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "tight silhouette",
+      "action": "越界：Faust listens to three knocks",
+      "continuity": "第4幕，Preserve the silhouette axis",
+      "zoom_start": 1.23,
+      "zoom_end": 1.32,
+      "godot_3d": {
+        "beat": "knock",
+        "camera_from": [
+          1.25,
+          1.94,
+          0.45
+        ],
+        "camera_to": [
+          1.19,
+          1.89,
+          0.12
+        ],
+        "target_from": [
+          0.91,
+          1.64,
+          -3.22
+        ],
+        "target_to": [
+          0.99,
+          1.61,
+          -3.22
+        ],
+        "fov_from": 44,
+        "fov_to": 42
+      }
+    },
+    {
+      "id": "shot-23",
+      "duration": 6.0,
+      "asset": "faust-study-night",
+      "caption": "所有钟声同时停下。",
+      "cue": "act-4",
+      "camera": "orbit",
+      "prompt": "study",
+      "scene": "study",
+      "composition": "close on the desk",
+      "action": "越界：Faust reaches for the key from the opening",
+      "continuity": "第4幕，Keep amber against crimson",
+      "zoom_start": 1.12,
+      "zoom_end": 1.25,
+      "pan_end": 18,
+      "godot_3d": {
+        "beat": "key",
+        "camera_from": [
+          1.43,
+          2.62,
+          1.91
+        ],
+        "camera_to": [
+          0.9,
+          2.51,
+          2.22
+        ],
+        "target_from": [
+          0.14,
+          1.26,
+          0.4
+        ],
+        "target_to": [
+          0.22,
+          1.22,
+          0.43
+        ],
+        "fov_from": 37,
+        "fov_to": 34
+      }
+    },
+    {
+      "id": "shot-24",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "门缝亮起深红的光。",
+      "cue": "act-4",
+      "camera": "pull back",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "centered threshold",
+      "action": "越界：The threshold opens",
+      "continuity": "第4幕，End on crimson",
+      "zoom_start": 1.24,
+      "zoom_end": 1,
+      "godot_3d": {
+        "beat": "open",
+        "camera_from": [
+          1.51,
+          1.69,
+          0.39
+        ],
+        "camera_to": [
+          1.75,
+          1.87,
+          1.48
+        ],
+        "target_from": [
+          1.35,
+          1.52,
+          -3.23
+        ],
+        "target_to": [
+          1.35,
+          1.55,
+          -3.23
+        ],
+        "fov_from": 44,
+        "fov_to": 46
+      }
+    },
+    {
+      "id": "shot-25",
+      "duration": 6.0,
+      "asset": "faust-study-night",
+      "caption": "他握住那把钥匙。",
+      "cue": "act-5",
+      "camera": "snap push toward the rising key",
+      "prompt": "study",
+      "scene": "study",
+      "composition": "low tabletop close-up, centered on the brass key",
+      "action": "开门：The key rises by itself, turns in midair, then drops back to the desk",
+      "continuity": "第5幕，The candle flares as the key rises",
+      "zoom_start": 1.04,
+      "zoom_end": 1.18,
+      "hook": {
+        "effect": "levitating_key",
+        "start_seconds": 0.5,
+        "peak_seconds": 2,
+        "settle_seconds": 3.5
+      },
+      "godot_3d": {
+        "beat": "key_hook",
+        "camera_from": [
+          0.88,
+          1.9,
+          2.38
+        ],
+        "camera_to": [
+          0.59,
+          1.78,
+          1.96
+        ],
+        "target_from": [
+          0.34,
+          1.4,
+          0.59
+        ],
+        "target_to": [
+          0.35,
+          1.48,
+          0.59
+        ],
+        "fov_from": 45,
+        "fov_to": 40
+      }
+    },
+    {
+      "id": "shot-26",
+      "duration": 6.0,
+      "asset": "faust-portrait",
+      "caption": "钥匙比冰更冷。",
+      "cue": "act-5",
+      "camera": "pan right",
+      "prompt": "portrait",
+      "scene": "study",
+      "composition": "centered portrait",
+      "action": "开门：Faust looks up",
+      "continuity": "第5幕，Amber key light",
+      "zoom_start": 1.08,
+      "zoom_end": 1.2,
+      "pan_start": -16,
+      "pan_end": 16,
+      "godot_3d": {
+        "beat": "look_up",
+        "camera_from": [
+          -1.24,
+          2.38,
+          2.11
+        ],
+        "camera_to": [
+          -0.45,
+          2.43,
+          1.91
+        ],
+        "target_from": [
+          -0.57,
+          1.99,
+          -0.31
+        ],
+        "target_to": [
+          -0.52,
+          2.05,
+          -0.38
+        ],
+        "fov_from": 40,
+        "fov_to": 37
+      }
+    },
+    {
+      "id": "shot-27",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "书房开始褪色。",
+      "cue": "act-5",
+      "camera": "crash zoom",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "wide silhouette",
+      "action": "开门：A shadow crosses the wall",
+      "continuity": "第5幕，Crimson marks the intrusion",
+      "zoom_start": 1,
+      "zoom_end": 1.2,
+      "godot_3d": {
+        "beat": "shadow",
+        "camera_from": [
+          0.8,
+          2.14,
+          2.91
+        ],
+        "camera_to": [
+          0.96,
+          2.07,
+          1.9
+        ],
+        "target_from": [
+          0.3,
+          1.69,
+          -3.23
+        ],
+        "target_to": [
+          0.64,
+          1.67,
+          -3.23
+        ],
+        "fov_from": 44,
+        "fov_to": 39
+      }
+    },
+    {
+      "id": "shot-28",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "影子在身后微笑。",
+      "cue": "act-5",
+      "camera": "creep toward the threshold; recoil at each knock",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "tight silhouette",
+      "action": "开门：Faust listens to three knocks",
+      "continuity": "第5幕，Preserve the silhouette axis",
+      "zoom_start": 1.23,
+      "zoom_end": 1.32,
+      "godot_3d": {
+        "beat": "knock",
+        "camera_from": [
+          1.25,
+          1.94,
+          0.45
+        ],
+        "camera_to": [
+          1.19,
+          1.89,
+          0.12
+        ],
+        "target_from": [
+          0.91,
+          1.64,
+          -3.22
+        ],
+        "target_to": [
+          0.99,
+          1.61,
+          -3.22
+        ],
+        "fov_from": 44,
+        "fov_to": 42
+      }
+    },
+    {
+      "id": "shot-29",
+      "duration": 6.0,
+      "asset": "faust-study-night",
+      "caption": "浮士德打开了门。",
+      "cue": "act-5",
+      "camera": "orbit",
+      "prompt": "study",
+      "scene": "study",
+      "composition": "close on the desk",
+      "action": "开门：Faust reaches for the key from the opening",
+      "continuity": "第5幕，Keep amber against crimson",
+      "zoom_start": 1.12,
+      "zoom_end": 1.25,
+      "pan_end": 18,
+      "godot_3d": {
+        "beat": "key",
+        "camera_from": [
+          1.43,
+          2.62,
+          1.91
+        ],
+        "camera_to": [
+          0.9,
+          2.51,
+          2.22
+        ],
+        "target_from": [
+          0.14,
+          1.26,
+          0.4
+        ],
+        "target_to": [
+          0.22,
+          1.22,
+          0.43
+        ],
+        "fov_from": 37,
+        "fov_to": 34
+      }
+    },
+    {
+      "id": "shot-30",
+      "duration": 6.0,
+      "asset": "faust-shadow",
+      "caption": "门后没有黎明。",
+      "cue": "act-5",
+      "camera": "pull back",
+      "prompt": "shadow",
+      "scene": "study",
+      "composition": "centered threshold",
+      "action": "开门：The threshold opens",
+      "continuity": "第5幕，End on crimson",
       "zoom_start": 1.24,
       "zoom_end": 1,
       "godot_3d": {
@@ -272,31 +1268,31 @@
   ],
   "music": [
     {
-      "id": "pulse",
+      "id": "act-1",
       "start": 0,
-      "duration": 8
+      "duration": 36
     },
     {
-      "id": "rising",
-      "start": 8,
-      "duration": 5
+      "id": "act-2",
+      "start": 36,
+      "duration": 36
     },
     {
-      "id": "knock",
-      "start": 13,
-      "duration": 6
+      "id": "act-3",
+      "start": 72,
+      "duration": 36
     },
     {
-      "id": "release",
-      "start": 19,
-      "duration": 5.5
+      "id": "act-4",
+      "start": 108,
+      "duration": 36
     },
     {
-      "id": "resolve",
-      "start": 24.5,
-      "duration": 5.5
+      "id": "act-5",
+      "start": 144,
+      "duration": 36
     }
   ],
-  "emotion": "Isolation, unease, recognition, decision",
+  "emotion": "孤独、试探、恐惧、交易、越界、选择",
   "godot_scene": "res://scenes/episode_001_study.tscn"
 }

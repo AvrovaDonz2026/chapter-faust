@@ -22,6 +22,7 @@ var movie_fps := 24.0
 var episode_duration := 0.0
 var wipe_duration := 0.0
 var hook_pose := Vector2.ZERO
+var ui_font: Font
 
 func read_data(path: String) -> Dictionary:
  var file := FileAccess.open(path, FileAccess.READ)
@@ -30,6 +31,7 @@ func read_data(path: String) -> Dictionary:
  return result if result is Dictionary else {}
 
 func _ready() -> void:
+ ui_font = load("res://assets/fonts/DroidSansFallbackFull.ttf") as Font
  var args := OS.get_cmdline_user_args()
  movie = args.has("--render")
  smoke = args.has("--smoke")
@@ -253,7 +255,7 @@ func draw_storyboard(shot: Dictionary) -> void:
  if texture: draw_texture_rect(texture, Rect2((FRAME_SIZE - size) / 2.0 + Vector2(pan, 0), size), false)
  elif not video.stream:
   draw_rect(Rect2(0, 0, 540, 960), Color("23151b"))
-  draw_string(ThemeDB.fallback_font, Vector2(36, 480), "Missing: " + str(shot.asset), HORIZONTAL_ALIGNMENT_LEFT, -1, 22, Color.WHITE)
+  draw_string(ui_font if ui_font else ThemeDB.fallback_font, Vector2(36, 480), "Missing: " + str(shot.asset), HORIZONTAL_ALIGNMENT_LEFT, -1, 22, Color.WHITE)
 
 func draw_storyboard_key() -> void:
  var lift := hook_pose.x
@@ -283,8 +285,8 @@ func draw_overlay(shot: Dictionary) -> void:
  var lines: PackedStringArray = str(shot.caption).split("\n", false)
  for i in lines.size():
   var position := Vector2(45, 799 + 31 * i)
-  draw_string(ThemeDB.fallback_font, position, lines[i], HORIZONTAL_ALIGNMENT_CENTER, 450, 25, Color("fff8ef"))
+  draw_string(ui_font if ui_font else ThemeDB.fallback_font, position, lines[i], HORIZONTAL_ALIGNMENT_CENTER, 450, 25, Color("fff8ef"))
  draw_wipe(wipe_progress(elapsed - shot_start, float(shot.duration), shot_index))
  if not movie:
   if safe: draw_rect(Rect2(35, 60, 470, 820), Color("e7c9a0"), false, 1)
-  draw_string(ThemeDB.fallback_font, Vector2(35, 931), "镜头 %s / %s   %.1f秒" % [shot.id.trim_prefix("shot-"), shot.cue, elapsed], HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("e7c9a0"))
+  draw_string(ui_font if ui_font else ThemeDB.fallback_font, Vector2(35, 931), "镜头 %s / %s   %.1f秒" % [shot.id.trim_prefix("shot-"), shot.cue, elapsed], HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("e7c9a0"))
