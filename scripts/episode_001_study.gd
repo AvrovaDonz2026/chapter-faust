@@ -111,32 +111,64 @@ func pose(spec: Dictionary, u: float, time: float, hook_lift := 0.0, hook_turn :
 func _build_alternate_scenes() -> void:
 	var library := _pivot(self, "LibraryScene", Vector3.ZERO)
 	for x in [-2.8, -1.4, 0.0, 1.4, 2.8]:
-		_box(library, "LibraryShelf", Vector3(x, 1.75, -2.9), Vector3(1.12, 3.5, 0.28), "30283a")
-		for y in [0.55, 1.2, 1.85, 2.5, 3.15]:
-			_box(library, "Shelf", Vector3(x, y, -2.70), Vector3(1.08, 0.07, 0.52), "775044")
+		_box(library, "LibraryShelf", Vector3(x, 1.92, -2.9), Vector3(1.12, 3.84, 0.30), "30283a")
+		for y in [0.55, 1.28, 2.01, 2.74, 3.47]:
+			_box(library, "Shelf", Vector3(x, y, -2.68), Vector3(1.10, 0.085, 0.56), "775044")
 			for book in range(5):
-				_box(library, "Tome", Vector3(x - 0.42 + book * 0.20, y + 0.16, -2.65), Vector3(0.13, 0.30 + (book % 3) * 0.08, 0.34), BOOK_COLORS[(book + int(x)) % BOOK_COLORS.size()])
-	for x in [-3.4, 3.4]: _box(library, "LibraryPillar", Vector3(x, 2.0, -2.5), Vector3(0.28, 4.0, 0.4), "57404a")
+				var h := 0.31 + float((book * 7 + int(x * 10)) % 5) * 0.075
+				var tome := _box(library, "Tome", Vector3(x - 0.42 + book * 0.20, y + 0.08 + h * 0.5, -2.61), Vector3(0.145, h, 0.38), BOOK_COLORS[posmod(book + int(x * 10), BOOK_COLORS.size())])
+				tome.rotation.z = [-0.035, 0.0, 0.025, 0.0, 0.04][book]
+				_box(library, "Gilt", tome.position + Vector3(0, h * 0.29, 0.198), Vector3(0.105, 0.018, 0.012), "c1a46a", 0.08)
+	for x in [-3.4, 3.4]:
+		_box(library, "LibraryPillar", Vector3(x, 2.0, -2.5), Vector3(0.34, 4.0, 0.46), "57404a")
+		_box(library, "PillarCap", Vector3(x, 3.88, -2.48), Vector3(0.48, 0.16, 0.58), "917052")
 	_box(library, "LibraryFloor", Vector3(0, -0.05, -0.4), Vector3(7.8, 0.12, 7.0), "241f31")
+	_box(library, "ReadingRug", Vector3(0, 0.02, 0.15), Vector3(4.8, 0.035, 3.3), "493344")
+	_box(library, "RugBorder", Vector3(0, 0.043, 0.15), Vector3(4.45, 0.012, 2.95), "b18a62", 0.06)
 	var corridor := _pivot(self, "CorridorScene", Vector3.ZERO)
 	_box(corridor, "CorridorFloor", Vector3(0, -0.05, -0.4), Vector3(7.8, 0.12, 7.0), "26303b")
 	for z in [-3.0, -1.3, 0.4, 2.1]:
-		_box(corridor, "Window", Vector3(-3.0, 2.15, z), Vector3(0.12, 3.1, 1.18), "172333", 0.12)
-		_box(corridor, "WindowGlow", Vector3(-2.90, 2.15, z), Vector3(0.03, 2.6, 0.85), "607fa0", 0.34)
-		_box(corridor, "Arch", Vector3(2.7, 2.0, z), Vector3(0.24, 3.8, 0.24), "493d48")
-	_box(corridor, "RainReflection", Vector3(-0.8, 0.02, -1.4), Vector3(3.8, 0.025, 0.9), "466279", 0.18)
+		_box(corridor, "WindowRecess", Vector3(-3.0, 2.15, z), Vector3(0.16, 3.1, 1.22), "172333")
+		_box(corridor, "WindowGlow", Vector3(-2.89, 2.15, z), Vector3(0.04, 2.76, 0.92), "607fa0", 0.48)
+		for crossbar_y in [1.35, 2.15, 2.95]:
+			_box(corridor, "WindowMullion", Vector3(-2.84, crossbar_y, z), Vector3(0.07, 0.045, 1.08), "34485e")
+		_box(corridor, "Arch", Vector3(2.7, 2.0, z), Vector3(0.30, 3.8, 0.40), "493d48")
+		_box(corridor, "ArchBase", Vector3(2.7, 0.14, z), Vector3(0.52, 0.28, 0.62), "76534b")
+	_box(corridor, "CorridorCeiling", Vector3(0, 3.85, -0.45), Vector3(6.6, 0.18, 7.0), "20232f")
+	_box(corridor, "RainReflection", Vector3(-0.8, 0.025, -1.4), Vector3(3.8, 0.035, 1.1), "466279", 0.32)
+	for i in range(7):
+		var rain := _box(corridor, "RainStreak", Vector3(-2.72, 0.035, -2.5 + i * 0.43), Vector3(0.018, 0.012, 0.38), "98b5ce", 0.18)
+		rain.rotation.y = -0.18
 	var contract := _pivot(self, "ContractScene", Vector3.ZERO)
 	_box(contract, "MirrorWall", Vector3(-2.7, 2.1, -2.8), Vector3(0.12, 3.8, 5.8), "17202b", 0.24)
-	for y in [0.8, 1.75, 2.7]: _box(contract, "Mirror", Vector3(-2.60, y, -2.78), Vector3(0.025, 0.65, 1.75), "6c5361", 0.55)
+	for y in [0.8, 1.75, 2.7]:
+		_box(contract, "MirrorFrame", Vector3(-2.57, y, -2.78), Vector3(0.09, 0.75, 1.88), "8d674a")
+		_box(contract, "Mirror", Vector3(-2.51, y, -2.78), Vector3(0.025, 0.63, 1.72), "82909a", 0.22)
+		_box(contract, "MirrorGlint", Vector3(-2.49, y + 0.18, -2.78), Vector3(0.018, 0.035, 1.40), "d9c7b5", 0.16)
 	_box(contract, "ContractTable", Vector3(0.0, 1.08, -0.2), Vector3(3.0, 0.16, 1.2), "513437")
+	for x in [-1.22, 1.22]:
+		_box(contract, "TableLeg", Vector3(x, 0.54, -0.2), Vector3(0.16, 1.0, 0.90), "34252c")
 	_box(contract, "ContractPaper", Vector3(0.0, 1.19, -0.2), Vector3(1.35, 0.025, 0.75), "c5a777", 0.04)
-	for x in [-1.3, 1.3]: _taper(contract, "RedCandle", Vector3(x, 1.45, -0.2), 0.42, 0.06, 0.07, "e05b55", 12)
+	_box(contract, "PaperBorder", Vector3(0.0, 1.208, -0.2), Vector3(1.26, 0.008, 0.66), "755440")
+	for line in range(4):
+		_box(contract, "ContractWriting", Vector3(-0.20, 1.216, -0.36 + line * 0.10), Vector3(0.64 - line * 0.06, 0.008, 0.018), "493940")
+	for x in [-1.3, 1.3]:
+		_taper(contract, "CandleSaucer", Vector3(x, 1.18, -0.2), 0.055, 0.15, 0.11, "b08a55", 16)
+		_taper(contract, "RedCandle", Vector3(x, 1.45, -0.2), 0.48, 0.06, 0.075, "e05b55", 12)
+		_oval(contract, "CandleFlame", Vector3(x, 1.72, -0.2), Vector3(0.06, 0.15, 0.055), "ffb55f", 1.0)
 	var threshold_scene := _pivot(self, "ThresholdScene", Vector3.ZERO)
 	_box(threshold_scene, "VoidFloor", Vector3(0, -0.08, -0.4), Vector3(8.0, 0.12, 7.0), "180f2b", 0.16)
 	for i in range(9):
 		var shard := _box(threshold_scene, "FloatingShard", Vector3(-3.2 + i * 0.8, 1.0 + (i % 4) * 0.55, -1.8 - (i % 3) * 0.5), Vector3(0.06, 0.9, 0.45), "b52c52", 0.65)
 		shard.rotation.z = -0.3 + i * 0.17
+		shard.rotation.y = -0.5 + float(i % 4) * 0.31
+	for x in [-2.4, 2.4]:
+		var rib := _box(threshold_scene, "PortalRib", Vector3(x, 2.0, -3.05), Vector3(0.09, 4.1, 0.17), "71314b", 0.25)
+		rib.rotation.z = -0.09 if x < 0 else 0.09
+	_box(threshold_scene, "PortalLintel", Vector3(0, 4.02, -3.05), Vector3(4.85, 0.12, 0.18), "71314b", 0.25)
 	_box(threshold_scene, "RedPortal", Vector3(0, 2.0, -3.0), Vector3(2.7, 3.8, 0.08), "b52c52", 0.85)
+	_box(threshold_scene, "PortalCore", Vector3(0, 2.0, -2.94), Vector3(1.75, 2.95, 0.035), "42152e", 0.72)
+	_box(threshold_scene, "PortalHorizon", Vector3(0, 1.35, -2.91), Vector3(1.55, 0.035, 0.025), "ff6175", 1.1)
 	scene_sets = {"library": library, "corridor": corridor, "contract": contract, "threshold": threshold_scene}
 
 func _material(color_code: String, emission := 0.0) -> StandardMaterial3D:
@@ -144,7 +176,8 @@ func _material(color_code: String, emission := 0.0) -> StandardMaterial3D:
 	if not palette.has(id):
 		var mat := StandardMaterial3D.new()
 		mat.albedo_color = Color(color_code)
-		mat.roughness = 0.86
+		mat.roughness = 0.82
+		mat.metallic = 0.12 if color_code in ["e1b768", "896b4c", "b89261", "c1a46a"] else 0.0
 		if emission > 0.0:
 			mat.emission_enabled = true
 			mat.emission = Color(color_code)
@@ -194,6 +227,11 @@ func _pivot(parent: Node3D, label: String, at: Vector3) -> Node3D:
 
 func _build_room() -> void:
 	_box(room, "Floor", Vector3(0, -0.09, 0), Vector3(8.2, 0.16, 9), "403032")
+	_box(room, "BackWallInset", Vector3(0.05, 2.24, -3.20), Vector3(3.0, 3.60, 0.05), "39333f")
+	_box(room, "WallPanelTop", Vector3(0.05, 3.75, -3.15), Vector3(3.1, 0.10, 0.08), "78635a")
+	for x in [-1.43, 1.53]:
+		_box(room, "WallPanelSide", Vector3(x, 2.2, -3.15), Vector3(0.08, 3.0, 0.08), "78635a")
+	_box(room, "WallPanelBottom", Vector3(0.05, 0.72, -3.15), Vector3(3.1, 0.10, 0.08), "78635a")
 	for i in range(17):
 		_box(room, "Floorboard", Vector3(-4.0 + i * 0.50, -0.01, 0), Vector3(0.484, 0.032, 9), ["433438", "48383b", "4d3c3e"][i % 3])
 	_box(room, "WestWall", Vector3(-4.10, 2.32, -0.5), Vector3(0.2, 4.8, 6.0), "424556")
@@ -223,10 +261,17 @@ func _build_room() -> void:
 
 func _build_desk() -> void:
 	_box(desk, "DeskTop", Vector3(-0.29, 1.04, 0.35), Vector3(2.83, 0.16, 1.38), "654438")
+	_box(desk, "DeskInlay", Vector3(-0.29, 1.125, 0.35), Vector3(2.62, 0.012, 1.17), "98704d")
+	_box(desk, "DeskWritingSurface", Vector3(-0.29, 1.135, 0.35), Vector3(2.54, 0.012, 1.09), "564044")
 	_box(desk, "Apron", Vector3(-0.29, 0.91, 0.93), Vector3(2.66, 0.18, 0.13), "432e2e")
 	for x in [-1.52, 0.94]:
 		for z in [-0.19, 0.91]:
 			_box(desk, "DeskLeg", Vector3(x, 0.48, z), Vector3(0.16, 0.96, 0.16), "423035")
+			_box(desk, "Foot", Vector3(x, 0.055, z), Vector3(0.30, 0.08, 0.28), "35272d")
+	_box(desk, "Drawer", Vector3(-0.29, 0.88, 0.98), Vector3(1.05, 0.30, 0.12), "543839")
+	for x in [-0.63, 0.05]:
+		_box(desk, "DrawerMolding", Vector3(x, 0.88, 1.047), Vector3(0.08, 0.19, 0.02), "8a634c")
+		_oval(desk, "DrawerPull", Vector3(x, 0.88, 1.07), Vector3(0.07, 0.055, 0.035), "c19a61")
 	for i in range(3):
 		var closed := _pivot(desk, "ClosedBook", Vector3(-1.2, 1.16 + i * 0.099, 0.55))
 		closed.rotation.y = -0.10 + 0.14 * i
@@ -243,13 +288,17 @@ func _build_desk() -> void:
 		for i in range(8):
 			_box(page, "InkLine", Vector3(0, 0.030, -0.185 + i * 0.047), Vector3(0.27 - (i % 3) * 0.031, 0.002, 0.007), "826749")
 	_taper(desk, "BrassSaucer", Vector3(0.49, 1.155, 0.18), 0.059, 0.19, 0.145, "896b4c", 20)
+	_taper(desk, "SaucerWell", Vector3(0.49, 1.188, 0.18), 0.012, 0.115, 0.115, "413037", 20)
 	_taper(desk, "Wax", Vector3(0.49, 1.36, 0.18), 0.36, 0.061, 0.069, "ecdcb2", 18)
 	_taper(desk, "Wick", Vector3(0.49, 1.552, 0.18), 0.04, 0.01, 0.011, "281c24")
 	flame = _pivot(desk, "FlameScale", Vector3(0.49, 1.63, 0.18))
 	var shell := _oval(flame, "Flame", Vector3.ZERO, Vector3.ONE, "ffab4d", 1.0)
-	var flame_shape: SphereMesh = shell.mesh
+	var flame_shape := SphereMesh.new()
 	flame_shape.radius = 0.046
 	flame_shape.height = 0.158
+	flame_shape.radial_segments = 12
+	flame_shape.rings = 6
+	shell.mesh = flame_shape
 	_oval(flame, "FlameCore", Vector3(0, -0.022, 0.034), Vector3(0.038, 0.088, 0.023), "fff1b0", 1.2)
 	wick_light = _omni(desk, "Candlelight", Vector3(0.49, 1.70, 0.24), Color("ffab62"), 1.7, 4.2, true)
 	key = _pivot(desk, "BrassKey", KEY_REST)
@@ -258,23 +307,37 @@ func _build_desk() -> void:
 	ring.inner_radius = 0.062
 	ring.outer_radius = 0.099
 	ring.rings = 16
-	ring.ring_segments = 8
-	_mesh(key, "Bow", ring, Vector3(-0.125, 0, 0), "e1b768", 0.20)
-	_box(key, "Shaft", Vector3(0.064, 0, 0), Vector3(0.22, 0.035, 0.028), "e1b768", 0.20)
-	for x in [0.116, 0.171]:
-		_box(key, "Tooth", Vector3(x, 0, 0.04), Vector3(0.028, 0.035, 0.073), "e1b768", 0.20)
+	ring.ring_segments = 12
+	_mesh(key, "Bow", ring, Vector3(-0.125, 0, 0), "e1b768", 0.12)
+	var inset := TorusMesh.new()
+	inset.inner_radius = 0.040
+	inset.outer_radius = 0.052
+	inset.rings = 16
+	inset.ring_segments = 8
+	_mesh(key, "BowInset", inset, Vector3(-0.125, 0, 0.002), "584631")
+	_box(key, "Shaft", Vector3(0.064, 0, 0), Vector3(0.26, 0.044, 0.036), "e1b768", 0.12)
+	_box(key, "ShaftCollar", Vector3(0.0, 0, 0), Vector3(0.07, 0.064, 0.046), "c1a46a")
+	for x in [0.155, 0.225]:
+		_box(key, "Tooth", Vector3(x, -0.017, 0.035), Vector3(0.038, 0.070, 0.066), "e1b768", 0.12)
 	key.hide()
 
 func _build_faust() -> void:
-	_taper(faust, "Coat", Vector3(0, 1.33, 0), 1.28, 0.38, 0.47, "242938", 9)
-	_oval(faust, "Shoulders", Vector3(0, 1.76, 0.026), Vector3(0.99, 0.41, 0.56), "333443")
+	_taper(faust, "Coat", Vector3(0, 1.28, 0), 1.34, 0.39, 0.56, "242938", 11)
+	_oval(faust, "Shoulders", Vector3(0, 1.77, 0.026), Vector3(1.06, 0.43, 0.60), "333443")
+	_box(faust, "LeftLapel", Vector3(-0.15, 1.77, 0.32), Vector3(0.19, 0.58, 0.045), "786056").rotation.z = -0.42
+	_box(faust, "RightLapel", Vector3(0.15, 1.77, 0.32), Vector3(0.19, 0.58, 0.045), "786056").rotation.z = 0.42
 	_taper(faust, "Collar", Vector3(0, 1.93, 0.045), 0.21, 0.244, 0.34, "5d4a4b", 9)
 	_box(faust, "CoatClosure", Vector3(0, 1.48, 0.378), Vector3(0.03, 0.42, 0.029), "876651")
 	head = _pivot(faust, "HeadPivot", Vector3(0, 2.00, 0.047))
-	_oval(head, "Head", Vector3(0, 0.26, 0), Vector3(0.46, 0.62, 0.43), "856259")
-	_oval(head, "Hair", Vector3(0, 0.39, -0.105), Vector3(0.50, 0.48, 0.45), "302b36")
+	_oval(head, "Head", Vector3(0, 0.26, 0), Vector3(0.43, 0.59, 0.42), "856259")
+	_oval(head, "HairCap", Vector3(0, 0.45, -0.045), Vector3(0.48, 0.38, 0.44), "302b36")
+	_oval(head, "SideburnLeft", Vector3(-0.19, 0.28, 0.075), Vector3(0.12, 0.33, 0.19), "302b36")
+	_oval(head, "SideburnRight", Vector3(0.19, 0.28, 0.075), Vector3(0.12, 0.33, 0.19), "302b36")
 	_oval(head, "Nose", Vector3(0, 0.22, 0.218), Vector3(0.105, 0.153, 0.135), "a07862")
 	_oval(head, "Beard", Vector3(0, 0.036, 0.139), Vector3(0.326, 0.40, 0.25), "423740")
+	_oval(head, "BeardPoint", Vector3(0, -0.13, 0.13), Vector3(0.20, 0.25, 0.20), "423740")
+	_oval(head, "MoustacheLeft", Vector3(-0.075, 0.14, 0.235), Vector3(0.16, 0.08, 0.09), "423740")
+	_oval(head, "MoustacheRight", Vector3(0.075, 0.14, 0.235), Vector3(0.16, 0.08, 0.09), "423740")
 	for x in [-0.109, 0.109]:
 		var brow := _box(head, "Brow", Vector3(x, 0.317, 0.195), Vector3(0.115, 0.035, 0.04), "392e37")
 		brow.rotation.z = signf(x) * 0.12
