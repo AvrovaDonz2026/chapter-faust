@@ -287,4 +287,4 @@ func draw_overlay(shot: Dictionary) -> void:
  draw_wipe(wipe_progress(elapsed - shot_start, float(shot.duration), shot_index))
  if not movie:
   if safe: draw_rect(Rect2(35, 60, 470, 820), Color("e7c9a0"), false, 1)
-  draw_string(ThemeDB.fallback_font, Vector2(35, 931), "%s / %s   %.1fs" % [shot.id, shot.cue, elapsed], HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("e7c9a0"))
+  draw_string(ThemeDB.fallback_font, Vector2(35, 931), "镜头 %s / %s   %.1f秒" % [shot.id.trim_prefix("shot-"), shot.cue, elapsed], HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("e7c9a0"))

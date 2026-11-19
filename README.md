@@ -1,4 +1,4 @@
-# chapter-faust — Episode 001
+# chapter-faust — 浮士德第一集
 
 *Faust: The Knock* is a 30-second, six-shot Chinese Faust adaptation with captions and an instrumental score. The production art path is modeled, lit, and assembled in Godot 4. The SVGs under `assets/fallback/` are storyboard plates only; they are byte-identical copies of the adopted `libfaust` assets.
 
