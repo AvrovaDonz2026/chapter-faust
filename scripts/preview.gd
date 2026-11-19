@@ -23,6 +23,8 @@ var episode_duration := 0.0
 var wipe_duration := 0.0
 var hook_pose := Vector2.ZERO
 var ui_font: Font
+var caption_font_size := 29
+var caption_line_spacing := 35
 
 func read_data(path: String) -> Dictionary:
  var file := FileAccess.open(path, FileAccess.READ)
@@ -284,9 +286,9 @@ func draw_overlay(shot: Dictionary) -> void:
  if fade > 0.0: draw_rect(Rect2(0, 0, 540, 960), Color(0, 0, 0, 0.85 * (1.0 - clampf((elapsed - shot_start) / fade, 0.0, 1.0))))
  var lines: PackedStringArray = str(shot.caption).split("\n", false)
  for i in lines.size():
-  var position := Vector2(45, 799 + 31 * i)
-  draw_string(ui_font if ui_font else ThemeDB.fallback_font, position, lines[i], HORIZONTAL_ALIGNMENT_CENTER, 450, 25, Color("fff8ef"))
+  var position := Vector2(45, 760 + caption_line_spacing * i)
+  draw_string(ui_font if ui_font else ThemeDB.fallback_font, position, lines[i], HORIZONTAL_ALIGNMENT_CENTER, 450, caption_font_size, Color("fff8ef"))
  draw_wipe(wipe_progress(elapsed - shot_start, float(shot.duration), shot_index))
  if not movie:
   if safe: draw_rect(Rect2(35, 60, 470, 820), Color("e7c9a0"), false, 1)
-  draw_string(ui_font if ui_font else ThemeDB.fallback_font, Vector2(35, 931), "镜头 %s / %s   %.1f秒" % [shot.id.trim_prefix("shot-"), shot.cue, elapsed], HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("e7c9a0"))
+  draw_string(ui_font if ui_font else ThemeDB.fallback_font, Vector2(35, 925), "镜头 %s / %s   %.1f秒" % [shot.id.trim_prefix("shot-"), shot.cue, elapsed], HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("e7c9a0"))
